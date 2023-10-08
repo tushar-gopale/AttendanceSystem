@@ -19,9 +19,9 @@ public class UserController {
     @PostMapping("/add-user")
     public ResponseEntity<?> addUser(@RequestBody User user){
 
-       Boolean dnsjd= userService.addUser(user);
+       Boolean response= userService.addUser(user);
 
-        return ResponseEntity.ok().body(dnsjd);
+        return ResponseEntity.ok().body(response);
     }
 
 
