@@ -1,5 +1,6 @@
 package com.tushardev.attendencesystem.entity;
 
+
 import lombok.Data;
 
 import javax.persistence.*;

@@ -25,4 +25,23 @@ public class UserServiceImpl implements UserService {
         else
             return false;
     }
+
+    @Override
+    public Boolean updateUser(User user) {
+
+        User existingUser = userRepo.findById(user.getUserId()).get();
+        if (existingUser!=null)
+        {
+            existingUser.setUserEmailId(user.getUserEmailId());
+            existingUser.setUserId(user.getUserId());
+            existingUser.setUserName(user.getUserName());
+            existingUser.setUserPhoneNo(user.getUserPhoneNo());
+            userRepo.save(existingUser);
+
+            return true;
+        }
+        return false;
+
+
+    }
 }

@@ -5,4 +5,6 @@ import com.tushardev.attendencesystem.entity.User;
 public interface UserService {
 
     Boolean addUser(User user);
+
+    Boolean updateUser(User user);
 }
