@@ -4,8 +4,8 @@ import com.tushardev.attendencesystem.dao.UserRepo;
 import com.tushardev.attendencesystem.entity.User;
 import com.tushardev.attendencesystem.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -20,8 +20,8 @@ public class UserServiceImpl implements UserService {
         System.out.println(user);
         User save = userRepo.save(user);
 
-        if(save!=null)
-        return true;
+        if (save != null)
+            return true;
         else
             return false;
     }
@@ -30,8 +30,7 @@ public class UserServiceImpl implements UserService {
     public Boolean updateUser(User user) {
 
         User existingUser = userRepo.findById(user.getUserId()).get();
-        if (existingUser!=null)
-        {
+        if (existingUser != null) {
             existingUser.setUserEmailId(user.getUserEmailId());
             existingUser.setUserId(user.getUserId());
             existingUser.setUserName(user.getUserName());
@@ -44,4 +43,12 @@ public class UserServiceImpl implements UserService {
 
 
     }
+
+    @Override
+    @Transactional
+    public void deleteUserById(Integer userId) {
+        userRepo.deleteById(userId);
+
+    }
+
 }
