@@ -7,4 +7,6 @@ public interface UserService {
     Boolean addUser(User user);
 
     Boolean updateUser(User user);
+
+    void deleteUserById(Integer userId);
 }
